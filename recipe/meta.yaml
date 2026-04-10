@@ -1,0 +1,50 @@
+{% set name = "kubernetes_asyncio" %}
+{% set version = "35.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/k/kubernetes_asyncio/kubernetes_asyncio-{{ version }}.tar.gz
+  sha256: 975870e3097b647c265a59b9175ab0841f0de06cd2162268273ca210b1fa672e
+
+build:
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python
+    - hatchling
+    - pip
+  run:
+    - python
+    - certifi >=14.05.14
+    - six >=1.9.0
+    - python-dateutil >=2.5.3
+    - urllib3 >=1.24.2
+    - pyyaml >=3.12
+    - aiohttp >=3.9.0,<4.0.0
+
+test:
+  imports:
+    - kubernetes_asyncio
+  requires:
+    - pip
+  commands:
+    - pip check
+
+about:
+  home: https://pypi.org/project/kubernetes-asyncio/
+  summary: Kubernetes Asynchronous Python Client
+  description: Asynchronous Python client library for interacting with Kubernetes APIs.
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  dev_url: https://github.com/tomplus/kubernetes_asyncio
+  doc_url: https://github.com/tomplus/kubernetes_asyncio
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
