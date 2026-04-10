@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/k/kubernetes_asyncio/kubernetes_asyncio-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 975870e3097b647c265a59b9175ab0841f0de06cd2162268273ca210b1fa672e
 
 build:
